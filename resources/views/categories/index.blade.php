@@ -38,6 +38,12 @@
         </div>
     @endif
     <div class="row">
+        <div class="col-md-12 text-right">
+            <a href="{{ route('categories.index') }}" class="btn btn-sm btn-primary">Create Category</a>
+        </div>
+    </div>
+    <br>
+    <div class="row">
         <div class="col-md-12">
             <table class="table table-bordered table-stripped">
                 <thead>
