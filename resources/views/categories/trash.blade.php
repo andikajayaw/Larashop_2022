@@ -64,7 +64,13 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('categories.restore', [$category->id]) }}" class="btn btn-success">Restore</a>
+                                <a href="{{ route('categories.restore', [$category->id]) }}" class="btn btn-success btn-sm">Restore</a>
+                                <form action="{{ route('categories.delete-permanent', [$category->id]) }}" class="d-inline" method="POST" onsubmit="return confirm('Delete this category permanently?')">
+                                    @csrf
+
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                </form>
                             </td>
                         </tr>
                     @endforeach

@@ -45,6 +45,10 @@ Route::get('/categories/trash', [CategoryController::class, 'trash'])->name('cat
  * RESTORE TRASH CATEGORIES ROUTES
  */
 Route::get('/categories/{id}/restore', [CategoryController::class,'restore'])->name('categories.restore');
+/**
+ * DELETE PERMANENT ROUTES
+ */
+Route::delete('/categories/{category}/delete-permanent', [CategoryController::class, 'deletePermanent'])->name('categories.delete-permanent');
 
 /**
  * CATEGORIES ROUTES
