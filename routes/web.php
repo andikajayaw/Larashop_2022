@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,11 @@ Route::resource("users", UserController::class);
  * TRASH CATEGORIES ROUTES
  */
 Route::get('/categories/trash', [CategoryController::class, 'trash'])->name('categories.trash');
+/**
+ * RESTORE TRASH CATEGORIES ROUTES
+ */
+Route::get('/categories/{id}/restore', [CategoryController::class,'restore'])->name('categories.restore');
+
 /**
  * CATEGORIES ROUTES
  */
