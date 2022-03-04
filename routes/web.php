@@ -25,7 +25,23 @@ Route::match(["GET", "POST"], "/register", function(){
     return redirect("/login");
 })->name("register");
 
+/**
+ * HOME ROUTES
+ */
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+/**
+ * USERS ROUTES
+ */
 Route::resource("users", UserController::class);
+
+
+/**
+ * TRASH CATEGORIES ROUTES
+ */
+Route::get('/categories/trash', [CategoryController::class, 'trash'])->name('categories.trash');
+/**
+ * CATEGORIES ROUTES
+ */
 Route::resource('categories', CategoryController::class);
+

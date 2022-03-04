@@ -16,8 +16,27 @@
                 </div>
             </form>
         </div>
+        <div class="col-md-6">
+            <ul class="nav nav-pills card-header-pills">
+                <li class="nav-item">
+                    <a href="{{ route('categories.index') }}" class="nav-link active">Published</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('categories.trash') }}" class="nav-link">Trash</a>
+                </li>
+            </ul>
+        </div>
     </div>
     <hr class="my-3">
+    @if(session('status'))
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-warning">
+                    {{ session('status') }}
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-12">
             <table class="table table-bordered table-stripped">
@@ -47,6 +66,11 @@
                         <td>
                             <a href="{{ route('categories.show', [$category->id]) }}" class="btn btn-primary btn-sm">Show</a>
                             <a href="{{ route('categories.edit', [$category->id]) }}" class="btn btn-info btn-sm">Edit</a>
+                            <form action="{{ route('categories.destroy', [$category->id]) }}" class="d-inline" method="POST" onsubmit="return confirm('Move category to trash ?')">
+                                @csrf
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="submit" value="Trash" class="btn btn-danger btn-sm">
+                            </form>
                         </td>
                     </tr>
                     @endforeach
