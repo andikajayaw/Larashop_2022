@@ -49,7 +49,7 @@
         <button class="btn btn-link btn-link-primary dropdown-toggle" id="navbar-dropdown" data-toggle="dropdown">
           {{Auth::user()->name}}
         </button>
-        @endif 
+        @endif
         <div class="dropdown-menu dropdown-menu-right" id="navbar-dropdown">
           <a href="#" class="dropdown-item">Profile</a>
           <a href="#" class="dropdown-item">Setting</a>
@@ -72,6 +72,7 @@
               <input class="border-dark form-control d-block d-md-none mb-4" type="text" placeholder="Search" aria-label="Search" />
               <li><a href="/home"><span class="oi oi-home"></span> Home</a></li>
               <li><a href="{{ route('users.index') }}"><span class="oi oi-people"></span>Manage Users</a></li>
+              <li><a href="{{ route('categories.index') }}"><span class="oi oi-tag"></span>Manage Categories</a></li>
 
               <div class="d-block d-md-none">
                   <div class="dropdown-divider"></div>
@@ -94,7 +95,7 @@
               <div class="col-md-12 pl-3 pt-2">
                   <div class="pl-3">
                       <h3>@yield("pageTitle")</h3>
-                      <br/>  
+                      <br/>
                   </div>
               </div>
             </div>
