@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
@@ -55,3 +56,13 @@ Route::delete('/categories/{category}/delete-permanent', [CategoryController::cl
  */
 Route::resource('categories', CategoryController::class);
 
+/**
+ * BOOK ROUTES
+ */
+Route::resource('books',BookController::class);
+
+
+/**
+ * AJAX SEARCH CATEGORIES
+ */
+Route::get('/ajax/categories/search', [CategoryController::class, 'ajaxSearch']);
