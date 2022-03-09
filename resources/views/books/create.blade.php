@@ -11,6 +11,11 @@
                 {{ session('status') }}
             </div>
         @endif
+        <div class="row mb-3">
+            <div class="col-md-12 text-left">
+                <a href="{{ route('books.index') }}" class="btn btn-danger">Back to List Book</a>
+            </div>
+        </div>
         <form action="{{ route('books.store') }}" class="shadow-sm p-3 bg-white" method="POST" enctype="multipart/form-data">
             @csrf
 
