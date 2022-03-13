@@ -4,6 +4,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Models\Category;
 
 /*
@@ -73,6 +74,11 @@ Route::delete('/books/{id}/delete-permanent', [BookController::class, 'deletePer
  * BOOK ROUTES
  */
 Route::resource('books',BookController::class);
+
+/**
+ * ORDERS ROUTES
+ */
+Route::resource('orders',OrderController::class);
 
 
 
