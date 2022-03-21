@@ -39,7 +39,7 @@
     @endif
     <div class="row">
         <div class="col-md-12 text-right">
-            <a href="{{ route('categories.index') }}" class="btn btn-sm btn-primary">Create Category</a>
+            <a href="{{ route('categories.create') }}" class="btn btn-sm btn-primary">Create Category</a>
         </div>
     </div>
     <br>

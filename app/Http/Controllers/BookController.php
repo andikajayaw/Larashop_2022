@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Validation\Rule;
+
 class BookController extends Controller
 {
     /**
@@ -44,6 +46,16 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $new_book = new \App\Models\Book;
+
+        \Validator::make($request->all(), [
+            "title" => "required|min:5|max:200",
+            "description" => "required|min:20|max:1000",
+            "author" => "required|min:3|max:100",
+            "publisher" => "required|min:3|max:200",
+            "price" => "required|digits_between:0,10",
+            "stock" => "required|digits_between:0,10",
+            "cover" => "required"
+        ])->validate();
 
         $new_book->title = $request->title;
         $new_book->description = $request->description;
@@ -106,6 +118,19 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         $book = \App\Models\Book::findOrFail($id);
+
+        \Validator::make($request->all(), [
+            "title" => "required|min:5|max:200",
+            "slug" => [
+                "required",
+                Rule::unique('books')->ignore($book->slug,"slug")
+            ],
+            "description" => "required|min:20|max:1000",
+            "author" => "required|min:3|max:100",
+            "publisher" => "required|min:3|max:200",
+            "price" => "required|digits_between:0,10",
+            "stock" => "required|digits_between:0,10"
+        ])->validate();
 
         $book->title = $request->get('title');
         $book->description = $request->get('description');
